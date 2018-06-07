@@ -20,7 +20,7 @@
   with_items:
     - { src: yum-cron.conf.j2, dst: /etc/yum/yum-cron.conf }
     - { src: yum-cron-hourly.conf.j2, dst: /etc/yum/yum-cron-hourly.conf }
-  when: yum_cron_yum|success
+  when: yum_cron_yum is success
 
 - name: Enable and start the yum-cron service on boot
   tags: yum-cron
@@ -29,5 +29,5 @@
     enabled: yes
     name: yum-cron
     state: started
-  when: yum_cron_yum|success
+  when: yum_cron_yum is success
 ...
