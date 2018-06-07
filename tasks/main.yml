@@ -1,0 +1,33 @@
+---
+- name: Ensure that the yum-cron package is installed
+  tags: yum-cron
+  become: true
+  yum:
+    name: yum-cron
+    state: present
+  register: yum_cron_yum
+
+- name: Attempting to overlay yum-cron configurations
+  tags: yum-cron
+  become: true
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dst }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart yum-cron
+  with_items:
+    - { src: yum-cron.conf.j2, dst: /etc/yum/yum-cron.conf }
+    - { src: yum-cron-hourly.conf.j2, dst: /etc/yum/yum-cron-hourly.conf }
+  when: yum_cron_yum|success
+
+- name: Enable and start the yum-cron service on boot
+  tags: yum-cron
+  become: true
+  service:
+    enabled: yes
+    name: yum-cron
+    state: started
+  when: yum_cron_yum|success
+...
