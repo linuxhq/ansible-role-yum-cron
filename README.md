@@ -1,7 +1,7 @@
-# ansible-role-yum-cron
+# ansible-role-yum_cron
 
-[![Build Status](https://travis-ci.org/linuxhq/ansible-role-yum-cron.svg?branch=master)](https://travis-ci.org/linuxhq/ansible-role-yum-cron)
-[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-yum--cron-blue.svg?style=flat)](https://galaxy.ansible.com/linuxhq/yum-cron)
+[![Build Status](https://travis-ci.org/linuxhq/ansible-role-yum_cron.svg?branch=master)](https://travis-ci.org/linuxhq/ansible-role-yum_cron)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-yum_cron-blue.svg?style=flat)](https://galaxy.ansible.com/linuxhq/yum_cron)
 [![License](https://img.shields.io/badge/license-GPLv3-brightgreen.svg?style=flat)](COPYING)
 
 RHEL/CentOS - An interface to conveniently call yum from cron
@@ -69,7 +69,7 @@ None
 
     - hosts: servers
       roles:
-        - role: linuxhq.yum-cron
+        - role: linuxhq.yum_cron
 
 ## License
 

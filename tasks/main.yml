@@ -1,6 +1,6 @@
 ---
 - name: Ensure that the yum-cron package is installed
-  tags: yum-cron
+  tags: yum_cron
   become: true
   yum:
     name: yum-cron
@@ -8,7 +8,7 @@
   register: yum_cron_yum
 
 - name: Attempting to overlay yum-cron configurations
-  tags: yum-cron
+  tags: yum_cron
   become: true
   template:
     src: "{{ item.src }}"
@@ -23,7 +23,7 @@
   when: yum_cron_yum is success
 
 - name: Enable and start the yum-cron service on boot
-  tags: yum-cron
+  tags: yum_cron
   become: true
   service:
     enabled: yes
