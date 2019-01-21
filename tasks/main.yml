@@ -17,9 +17,11 @@
     group: root
     mode: 0644
   notify: restart yum-cron
-  with_items:
+  loop:
     - { src: yum-cron.conf.j2, dst: /etc/yum/yum-cron.conf }
     - { src: yum-cron-hourly.conf.j2, dst: /etc/yum/yum-cron-hourly.conf }
+  loop_control:
+    label: "{{ item.src.split('.')[0] }}"
   when: yum_cron_yum is success
 
 - name: Enable and start the yum-cron service on boot
